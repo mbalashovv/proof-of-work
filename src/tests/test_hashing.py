@@ -18,7 +18,7 @@ class TestHashingFunctions(unittest.TestCase):
         nonce = solve_challenge(raw_challenge)
         self.assertIsInstance(nonce, int, "Nonce should be an integer")
         self.assertTrue(
-            hashlib.sha256(f"abcdef{nonce}".encode()).hexdigest().startswith("000"),
+            hashlib.sha256(f"abcdef{nonce}".encode("utf-8")).hexdigest().startswith("000"),
             "Solved nonce should produce a hash with the correct difficulty"
         )
 
